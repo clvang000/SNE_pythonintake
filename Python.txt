@@ -1,0 +1,308 @@
+
+==========================
+Python
+==========================
+
+
+--------theory
+
+
+- str written like 'henk', \ is the escape character for strings
+- python is not strongly typed: there is no declaration but instant assignment
+- the main program is called the module
+- identifiers: numerical arguments n - iteration variables i, j, k
+- expressions are not ended by a semicolon
+- in codeblocks indentation has to be equal everywhere for it to belong to the block
+- there is officially no char type in python
+
+casts:
+    int() > removes everything after decimal
+    float()
+    str()
+    long()
+
+naming:
+    variable: henk_de_vries
+    function(there are no methods): methode_nummer_twee
+    constant: GERARD_ARNINKHOF
+    class: HenkDeVries (within the file, not filename which is henk_de_vries)
+    
+keywords:
+    print 'henk'
+    
+rowtypes:
+    list (mutable, actually arraylist, can contain combination of objects)
+    string (immutable)
+    
+ASCII:
+    ord(<char>)
+    chr(<int>)
+    (when casting a char to int you may get the number)
+    
+general functions:
+    list(<string>) >> builds a list from the characters in the string
+    min(<list>), min(<string>)
+    max(<list>), max(<string>)
+    sum(<list>)
+    round(<float>), round(<int>)
+    len(<list>), len(<string>)
+    range(<end>), range(<start>, <end>), range(<start>, <end>, <stepsize>)
+    sqrt()
+    factorial()
+    2 ** 3 == 8 > to the power off
+    map(<function>, <list>) >> map(<cast_function>, <list_of_numeric_strings>)
+    
+string functions:
+    s.split(), s.split(<delimiter_string>) >>> default split uses white space as the delimiter
+    s.center(<int>), s.center(<int>, <char>) >>> ie center40, now 0 to 39 indices, with s in the middle
+    s.count(<char>) >>> counts occurences of the input char
+    s.index() >> same as find but crashes if the char is not present
+    s.find(<char>) >>> returns the index position of the first encounter of the char, if not present -1 is returned
+    s.upper() >> whole string goes uppercase
+    s.lower() >> whole string goes lowercase
+    s.splitlines() >> splits the string using \n as the delimiter
+
+list functions:
+    l.sort() >> changes the list into a sorted list
+    l.reverse() >> changes the list into a reversed list
+    l.remove(<any type>) >> first encounter is removed from the list
+    l.insert(<index>, <any type>) >> moves the element at this index one position forward and insert new element
+    l.append(<any type>) >> adds the element at the end of the list
+    
+arithmetic / boolean operators: 
+    similar to java
+    
+boolean stuff (all return booleans(true or false)):
+    a == b
+    a > b
+    a < b
+    a >= b
+    a <= b
+    <boolean> and <boolean>
+    <boolean> or <boolean>
+    not equals ! (of java)
+
+input/output:
+    raw_input() >> can convert the return value instantly to i.e. int(), float(), list()
+    raw_input(<user_prompt_string>) >> the return value of raw_input is a string of what the user inputted
+    print 'banaan %d %f %s %7.3f%' % (int, float, string, formatted_float), >> the % is the escape char
+    >> if you follow the complete print statement with a comma, you change the default \n to a space after the printed value
+
+conditions:
+    if <boolean_statement>:
+        ....
+    elif <boolean_statement>:
+        ....
+    else:
+        ....
+ 
+iterations:   
+    while <boolean_statement>:
+        ....
+      
+    >> the for loop is quite different from java 
+    for <variable> in <row_type>: >> walks over all elements in the row type and uses them as the variable
+        ....
+    >> in the for loop you can just use the range(<x>) with a single argument to say how many times the loop will run
+
+functions1:
+    def <function_name> (param1, param2, ...): >> no strong typing for the function parameters required (def = define)
+        ....
+        return <function_result> >> not mandatory, there is no return type to be specified for the function
+
+functions2:
+    - if you want to change the value of a globar var inside a function, you have to use the global keyword
+    - you can however use the global variable without using this keyword
+
+files:
+    - import file_input
+    - file = open('<filename>')
+    - input = file.read(), of readlines(), daarna strip om \n weg te halen per line
+    - lines = input.splitlines() > this uses \n as a delimiter
+    - etc...
+    
+modules/class/objects:
+    - classes have an initializer (constructor)
+    - in function in classes we use self (not in the module)
+    - henk = TestClass(13, 37) > makes testclass object with arguments 13 and 37 
+    - (no new operator, and no typing)
+    - Both the class and object can be changed, even after the object is made, class changes will show.
+    - If you do not declare variables first, you can also do so in the initializer.
+    - self = this, it is convention to put self as a function parameter
+    - this.x += 1 OR object.x += 1 > both change for the current object
+    - TestClass.x += x > changes for all objects of this class in real time (static)
+    - Functions can also be parameters
+    - You can get the same function from the object or from the class.
+    - We can even add variables to the class in real time (python is more object focussed)
+    - the initializer automatically returns itself
+    - initializer can only be placed once in the class (not overloaded)
+	- when you print an object, the memory address is printed
+
+scope:
+    - if you want to assign to a global variable, you have to use the keyword global 
+    - if you just want to use it, you can use it without using the keyword global
+
+		
+		
+		
+--------examples	
+		
+
+# the string is immutable, content can't be changed through indices
+string_example = 'abc' + 'def'
+print "First character of the string: %s" % string_example[0]
+print "Last character of the string: %s" % string_example[-1]
+print "Length of the string: %d\n" % len(string_example)
+
+# the listis mutable, content can be changed through indices
+list_example = [1, 2, 'henk', 4.5, 'banaan'] + [13.37, 1, 5]
+print "First element of the list: %s" % list_example[0]
+print "Last element of the list: %s" % list_example[-1]
+print "Length of the list: %d\n" % len(list_example)
+
+# this only works with a string
+list_example2 = list('abc def')
+print list_example2
+
+string_example2 = str(list_example2)
+print string_example2
+
+# ASCII indexing
+index_of_a = ord('a')
+index_of_z = ord('z')
+index_of_0 = ord('0')
+index_of_1 = ord('1')
+index_of_9 = ord('9')
+index_of_A = ord('A')
+index_of_Z = ord('Z')
+print "\nASCII indexes of 0, 1, 9, A, Z, a, z: %s - %s - %s - %s - %s - %s - %s\n" % (index_of_0, index_of_1, index_of_9, index_of_A, 
+                                                                              index_of_Z, index_of_a, index_of_z)
+
+
+
+
+# numeric list
+numeric_list = [1.5, 2, 2.5]
+minimum = min(numeric_list) # can also be done with string (according to index value)
+maximum = max(numeric_list)
+first_list_element = numeric_list[0]
+rounded_element = int(round(first_list_element))
+list_sum = sum(numeric_list)
+length = len(numeric_list)
+print 'mini: %f, max: %f, first: %f, rounded: %f, sum: %f, length: %d' % (minimum, maximum, first_list_element, rounded_element, list_sum, length)
+numeric_list += [3, 4, 5]
+print numeric_list
+
+# test
+print "\n%f" % (17.0 / 4.0)
+print "%d\n" % (17 % 4)
+
+# booleans
+boolean_test1 = True and False
+boolean_test2 = True or False
+boolean_test3 = (1 >= 1)
+print boolean_test1
+print boolean_test2
+print boolean_test3
+
+# more tests
+if 2 < 3 :
+    print '\n2 is not larger or equal to 3\n'
+if 'a' < 'b':
+    print 'a is smaller than b\n'
+
+# ranges
+range_list = range(11)
+range_list2 = range(1, 11)
+range_list3 = range(2, 10, 2)
+range_list4 = range(10, -1, -1)
+print range_list
+print range_list2
+print range_list3
+print range_list4
+
+
+
+
+# functies - local/global variable scope tests
+
+a = 5
+global b
+b = 10
+
+
+def test_functie():
+    a = 10
+    print 'test_functie1 a = %d' % a
+    
+def test_functie2():
+    global a
+    a = 15
+    b = 12
+    print 'test_functie2 a = %d' % a
+    print 'test_functie2 b = %d' % b
+    
+def test_functie3():
+    print 'test_functie2 a = %d' % a
+
+print 'global a: %d' % a
+test_functie()
+print 'global a: %d' % a
+test_functie2()
+print 'global a: %d' % a
+print 'global b: %d' % b
+test_functie3()
+
+
+# string centering
+
+banaan = 'banaan'
+banaan2 = banaan.center(10, '-')
+letter_b = banaan2.find('b')
+letter_z = banaan2.find('z')
+letter_a = banaan2.index('a')
+print '\n%s\n%s %s %s\n' % (banaan2, letter_b, letter_z, letter_a)
+
+# factorial function test
+
+def factorial(n):
+    result = 1
+    for i in range(2, n + 1): # start at 2; 1 has no effect
+        result *= i
+    return result
+
+print factorial(3)
+print factorial(4)
+print factorial(5)
+print factorial(6)
+
+# function return test
+
+def test():
+    return 1337
+print ''
+print test()
+print ''
+
+# list slices / also works for strings
+# the slice arguments are index positions
+
+test_list = range(1,21)
+print test_list 
+print test_list[3:10] # returns new list of test_list, with indices 3,4,5,6,7,8,9
+print test_list[2:4] # new list with indices 2 and 3
+print test_list[4:16:2]
+print test_list[::-1]
+print test_list[::] # you can leave the format <start>:<end>:<stepsize> empty as well
+
+print ''
+print test_list[15:]
+print test_list[15::]
+print test_list[:5]
+print test_list[:5:]
+
+print ''
+test_string = 'Gert-Jan Vink'
+print test_string[::-1]
+
+
