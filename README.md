@@ -2,6 +2,5 @@
 
 # use a secondary test.py file
 
-# first 'touch' all the .py files
-# then gedit open
+# first 'touch' all the .py files, then gedit open
 
