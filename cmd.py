@@ -7,6 +7,7 @@ import subprocess
 
 
 # use 4 space indentation
+# use a secondary test.py file
 
 
 ''' Global variables '''
