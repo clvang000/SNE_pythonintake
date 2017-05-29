@@ -6,10 +6,6 @@ from subprocess import check_output
 import subprocess
 
 
-# use 4 space indentation
-# use a secondary test.py file
-
-
 ''' Global variables '''
 
 
